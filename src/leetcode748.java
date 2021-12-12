@@ -28,7 +28,6 @@ class Solution748 {
             } else if (flag.get() == 0 && word.length() < result.length()) {
                 result = word;
             }
-
         }
         return result;
     }
