@@ -1,4 +1,4 @@
-class Solution {
+class Solution807 {
     public static int maxIncreaseKeepingSkyline(int[][] grid) {
         int length = grid.length;
         int ans = 0;
