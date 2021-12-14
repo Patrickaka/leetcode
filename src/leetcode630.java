@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-class Solution {
+class Solution630 {
     public static int scheduleCourse(int[][] courses) {
         Arrays.sort(courses, Comparator.comparingInt(a -> a[1]));
         PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
