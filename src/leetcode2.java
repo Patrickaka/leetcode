@@ -45,16 +45,8 @@ class Solution2 {
         l2 = l2.next;
         ListNode now = listNode;
         while (l1 != null || l2 != null) {
-            if (l1 != null) {
-                x1 = l1.val;
-            } else {
-                x1 = 0;
-            }
-            if (l2 != null) {
-                x2 = l2.val;
-            } else {
-                x2 = 0;
-            }
+            x1 = l1 != null ? l1.val : 0;
+            x2 = l2 != null ? l2.val : 0;
             ans = x1 + x2 + flag;
             flag = 0;
             if (x1 + x2 >= 10) {
