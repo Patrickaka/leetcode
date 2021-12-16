@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 
-class Solution {
+class Solution851 {
 
     int N = 500, M = 500 * 499 / 2;
 
