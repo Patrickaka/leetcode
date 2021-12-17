@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-class Solution {
+class Solution1610 {
     static double eps = 1e-9;
 
     public static int visiblePoints(List<List<Integer>> points, int angle, List<Integer> location) {
