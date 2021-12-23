@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-class Solution {
+class Solution1044 {
 
     int N = 30006, M = 1313131;
     long[] h = new long[N], p = new long[N];
