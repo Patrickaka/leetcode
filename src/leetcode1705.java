@@ -1,20 +1,26 @@
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 class Solution {
     public int eatenApples(int[] apples, int[] days) {
-        int ans = 0;
-        int n = apples.length;
-        int[] eating = new int[40005];
-        int maxDay = 0;
-        for (int i = 0; i < n; i++) {
-            if (apples[i] == 0) {
-                continue;
+        PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+        int n = apples.length, time = 0, ans = 0;
+        while (time < n || !q.isEmpty()) {
+            if (time < n && apples[time] > 0) {
+                q.add(new int[]{time + days[time] - 1, apples[time]});
+
             }
-            maxDay = i + 1 + apples[i] - 1;
-            for (int j = 1; j < maxDay; j++) {
-                if (eating[j] == 0) {
-                    ans++;
+            while (!q.isEmpty() && q.peek()[0] < time) {
+                q.poll();
+            }
+            if (!q.isEmpty()) {
+                int[] cur = q.poll();
+                if (--cur[1] > 0 && cur[0] > time) {
+                    q.add(cur);
                 }
-                eating[i]++;
+                ans++;
             }
+            time++;
         }
         return ans;
     }
