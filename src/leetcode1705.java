@@ -1,7 +1,7 @@
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-class Solution {
+class Solution1705 {
     public int eatenApples(int[] apples, int[] days) {
         PriorityQueue<int[]> q = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
         int n = apples.length, time = 0, ans = 0;
