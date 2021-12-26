@@ -1,7 +1,5 @@
-import org.jetbrains.annotations.NotNull;
-
 class Solution1154 {
-    public static int dayOfYear(@NotNull String date) {
+    public static int dayOfYear(String date) {
         int year = Integer.parseInt(date.substring(0, 4));
         int month = Integer.parseInt(date.substring(5, 7));
         int day = Integer.parseInt(date.substring(8, 10));

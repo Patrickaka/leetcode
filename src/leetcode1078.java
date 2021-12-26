@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-class Solution {
+class Solution1078 {
     public String[] findOcurrences(String text, String first, String second) {
         String[] ans = new String[110];
         String[] texts = text.split(" ");
