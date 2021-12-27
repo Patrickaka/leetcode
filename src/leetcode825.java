@@ -6,12 +6,8 @@ class Solution {
         int ans = 0, n = ages.length;
         for (int i = n - 1; i > 0; i--) {
             int min = (int) (ages[i] * 0.5 + 7);
-            boolean flag = ages[i] > 100;
             int temp = 0;
             for (int j = i - 1; j >= 0 && ages[j] > min; j--) {
-                if (flag && ages[j] < 100) {
-                    break;
-                }
                 temp++;
             }
             ans += temp;
