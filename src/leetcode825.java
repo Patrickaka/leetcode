@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Solution {
+class Solution825 {
     public static int numFriendRequests(int[] ages) {
         Arrays.sort(ages);
         int ans = 0, n = ages.length;
