@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class Solution472 {
     Set<Long> wordsSet = new HashSet<>();
     final int P = 131, OFFSET = 128;
 
