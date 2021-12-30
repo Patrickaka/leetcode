@@ -1,4 +1,4 @@
-class Solution {
+class Solution1995 {
     public static int countQuadruplets1(int[] nums) {
         int n = nums.length;
         int ans = 0;

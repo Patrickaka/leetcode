@@ -26,8 +26,9 @@ public class SimpleBag {
         }
         for (int i = 1; i < n; i++) {
             for (int j = c; j >= 0; j--) {
-                int x = dp[]
+//                int x = dp[]
             }
         }
+        return 0;
     }
 }
