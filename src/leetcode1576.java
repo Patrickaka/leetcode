@@ -1,4 +1,4 @@
-class Solution {
+class Solution1576 {
     public String modifyString(String s) {
         char[] ans = s.toCharArray();
         for (int i = 0; i < ans.length; i++) {
