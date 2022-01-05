@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-class Solution {
+class Solution846_1926 {
     public boolean isNStraightHand(int[] hand, int groupSize) {
         Map<Integer, Integer> map = new HashMap<>();
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a));
