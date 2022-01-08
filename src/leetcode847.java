@@ -2,7 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.Deque;
 
-class Solution {
+class Solution847 {
 
     static int INF = 0x3f3f3f3f;
 

@@ -1,4 +1,4 @@
-class Solution {
+class Solution1614 {
     public int maxDepth(String s) {
         char[] chars = s.toCharArray();
         int max = 0, temp = 0;
