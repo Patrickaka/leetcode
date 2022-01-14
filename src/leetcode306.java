@@ -59,10 +59,4 @@ class Solution306 {
         return flag;
     }
 
-    public static void main(String[] args) {
-        Solution s = new Solution();
-        String num = "199100199";
-        boolean ans = s.isAdditiveNumber(num);
-        System.out.println(ans);
-    }
 }
