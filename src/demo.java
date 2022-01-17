@@ -13,16 +13,15 @@ public class demo {
     public static void main(String[] args) {
         demo t = new demo();
         int[] arr = {1, 2, 3, 4, 5, 6 ,7 ,8, 9, 10 ,11};
-        // 循环获得每个长度的排列组合
-        t.getSequence(arr, 0, 11);
+        t.getSequence(arr, 0, 4);
     }
 
     /**
      * 获得指定数组从指定开始的指定数量的数据组合<br>
      *
-     * @param arr   指定的数组
+     * @param arr   指定的数组 -- 订单数组
      * @param begin 开始位置
-     * @param num   获得的数量
+     * @param num   获得的数量 -- 司机数量
      */
     public void getSequence(int[] arr, int begin, int num) {
         if (num == 0) {
