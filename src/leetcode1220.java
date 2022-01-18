@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Solution {
+class Solution1220 {
     int mod = (int) (1e9 + 7);
 
     public int countVowelPermutation(int n) {
