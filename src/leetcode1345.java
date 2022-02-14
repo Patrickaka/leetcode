@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class Solution1345 {
     final int INF = 0x3f3f3f3f;
 
     public int minJumps(int[] arr) {
