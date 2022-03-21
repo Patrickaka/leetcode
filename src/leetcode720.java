@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-class Solution {
+class Solution720 {
     public String longestWord1(String[] words) {
         String ans = "";
         Set<String> set = new HashSet<>(Arrays.asList(words));
