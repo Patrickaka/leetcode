@@ -16,7 +16,7 @@ import java.util.Set;
  * }
  * }
  */
-class Solution {
+class Solution653 {
     Set<Integer> set = new HashSet<>();
 
     public boolean findTarget(TreeNode root, int k) {
