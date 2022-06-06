@@ -1,8 +1,8 @@
 import java.util.*;
 
 class Solution954 {
-    static int[] cnts = new int[M * 2];
     static int N = 100010, M = N * 2;
+    static int[] cnts = new int[M * 2];
 
     public boolean canReorderDoubled1(int[] arr) {
         Arrays.fill(cnts, 0);

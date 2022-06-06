@@ -1,4 +1,4 @@
-class Solution {
+class Solution744 {
     public char nextGreatestLetter(char[] letters, char target) {
         char goal = (char) (target + 1);
         char ans = ' ';
