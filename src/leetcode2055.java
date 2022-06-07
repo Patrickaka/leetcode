@@ -1,63 +1,55 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 class Solution2055 {
     public static int[] platesBetweenCandles(String s, int[][] queries) {
-        int[] ans = new int[queries.length];
-        int[] temp = new int[s.length()];
-        List<Integer> list = new ArrayList<>();
-        Arrays.fill(ans, 0);
-        char[] chars = s.toCharArray();
-        int num = 0;
-        for (int i = chars.length - 1; i >= 0; i--) {
-            temp[i] = num;
-            if (chars[i] == '*') {
-                num++;
-            } else {
-                list.add(i);
+        char[] cs = s.toCharArray();
+        int n = cs.length, m = queries.length;
+        int[] sum = new int[n + 1], ans = new int[m];
+        List<Integer> flag = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            sum[i + 1] = sum[i] + (cs[i] == '*' ? 1 : 0);
+            if (cs[i] == '|') {
+                flag.add(i);
             }
         }
-        Collections.sort(list);
-        if (list.size() <= 2) {
+        if (flag.size() == 0) {
             return ans;
         }
-        for (int i = 0; i < queries.length; i++) {
-            int[] query = queries[i];
-            int a = query[0], b = query[1];
-            int c = -1, d = -1;
-            int l = 0, r = list.size() - 1;
-            while (l < r) {
-                int mid = l + r >> 1;
-                if (list.get(mid) >= a) {
-                    r = mid;
+        for (int i = 0; i < m; i++) {
+            int l = queries[i][0], r = queries[i][1], c, d;
+            int a = 0, b = flag.size() - 1;
+            while (a < b) {
+                int mid = (a + b) >> 1;
+                if (flag.get(mid) >= l) {
+                    b = mid;
                 } else {
-                    l = mid + 1;
+                    a = mid + 1;
                 }
             }
-            if (list.get(r) >= a) {
-                c = list.get(r);
+            if (flag.get(b) >= l) {
+                c = flag.get(b);
             } else {
                 continue;
             }
-            l = 0;
-            r = list.size() - 1;
-            while (l < r) {
-                int mid = l + r + 1 >> 1;
-                if (list.get(mid) <= b) {
-                    l = mid;
+            a = 0;
+            b = flag.size() - 1;
+            while (a < b) {
+                int mid = (a + b + 1) >> 1;
+                if (flag.get(mid) <= r) {
+                    a = mid;
                 } else {
-                    r = mid - 1;
+                    b = mid - 1;
                 }
             }
-            if (list.get(r) <= b) {
-                d = list.get(r);
+            if (flag.get(b) <= r) {
+                d = flag.get(b);
             } else {
                 continue;
             }
             if (c <= d) {
-                ans[i] = temp[c] - temp[d];
+                ans[i] = sum[d + 1] - sum[c];
             }
         }
         return ans;
