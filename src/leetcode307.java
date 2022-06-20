@@ -1,9 +1,9 @@
-class NumArray {
+class NumArray307 {
 
     int[] array;
     int[] sums;
 
-    public NumArray(int[] nums) {
+    public NumArray307(int[] nums) {
         array = nums;
         sums = new int[nums.length];
         int sum = 0;
@@ -25,13 +25,3 @@ class NumArray {
         return left != 0 ? sums[right] - sums[left] : sums[right];
     }
 }
-
-class Solution307 {
-    public static void main(String[] args) {
-        NumArray obj = new NumArray(new int[]{9, -8});
-        obj.update(0, 3);
-        int param_2 = obj.sumRange(1, 1);
-        System.out.println(param_2);
-    }
-}
-
