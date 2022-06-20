@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-class Solution {
+class Solution498 {
     public static int[] findDiagonalOrder(int[][] mat) {
         int n = mat.length, m = mat[0].length, cnt = 0;
         boolean flag = true;
