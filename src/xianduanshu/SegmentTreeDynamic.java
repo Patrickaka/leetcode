@@ -1,31 +1,30 @@
-class NumArray {
+package xianduanshu;
 
+/**
+ *
+ */
+class SegmentTreeDynamic {
     private int N = (int) 1e9;
     private Node root = new Node();
-
-    public NumArray(int[] nums) {
-        N = nums.length;
-        for (int i = 0; i <= N; i++) {
-            update(root, 0, N, i, i, nums[i]);
-        }
-    }
 
     private void pushUp(Node node) {
         node.val = node.left.val + node.right.val;
     }
 
     private void pushDown(Node node, int leftNum, int rightNum) {
+        //动态开点
         if (node.left == null) {
             node.left = new Node();
         }
         if (node.right == null) {
             node.right = new Node();
         }
+        //add为0 没有标记
         if (node.add == 0) {
             return;
         }
-        node.left.val = node.add;
-        node.right.val = node.add;
+        node.left.val = node.add * leftNum;
+        node.right.val = node.add * rightNum;
         node.left.add = node.add;
         node.right.add = node.add;
         node.add = 0;
@@ -33,8 +32,7 @@ class NumArray {
 
     private void update(Node node, int start, int end, int l, int r, int val) {
         if (l <= start && end <= r) {
-            //node.val += (end - start + 1) * val;
-            node.val = val;
+            node.val += (end - start + 1) * val;
             node.add = val;
             return;
         }
@@ -64,14 +62,6 @@ class NumArray {
         return ans;
     }
 
-    public void update(int index, int val) {
-        update(root, 0, N, index, index, val);
-    }
-
-    public int sumRange(int left, int right) {
-        return query(root, 1, N, left, right);
-    }
-
     static class Node {
         //左右孩子节点
         Node left, right;
@@ -81,3 +71,5 @@ class NumArray {
         int add;
     }
 }
+
+

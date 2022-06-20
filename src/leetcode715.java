@@ -1,13 +1,9 @@
-class NumArray {
-
-    private int N = (int) 1e9;
+class RangeModule {
+    private int N = (int) 1e9 + 10;
     private Node root = new Node();
 
-    public NumArray(int[] nums) {
-        N = nums.length;
-        for (int i = 0; i <= N; i++) {
-            update(root, 0, N, i, i, nums[i]);
-        }
+    public RangeModule() {
+
     }
 
     private void pushUp(Node node) {
@@ -24,17 +20,17 @@ class NumArray {
         if (node.add == 0) {
             return;
         }
-        node.left.val = node.add;
-        node.right.val = node.add;
+        node.left.val = node.add == -1 ? 0 : leftNum;
+        node.right.val = node.add == -1 ? 0 : rightNum;
         node.left.add = node.add;
         node.right.add = node.add;
         node.add = 0;
     }
 
     private void update(Node node, int start, int end, int l, int r, int val) {
+        int len = end - start + 1;
         if (l <= start && end <= r) {
-            //node.val += (end - start + 1) * val;
-            node.val = val;
+            node.val = val == 1 ? len : 0;
             node.add = val;
             return;
         }
@@ -56,7 +52,7 @@ class NumArray {
         int mid = (start + end) >> 1, ans = 0;
         pushDown(node, mid - start + 1, end - mid);
         if (l <= mid) {
-            ans += query(node.left, start, mid, l, r);
+            ans = query(node.left, start, mid, l, r);
         }
         if (r > mid) {
             ans += query(node.right, mid + 1, end, l, r);
@@ -64,12 +60,16 @@ class NumArray {
         return ans;
     }
 
-    public void update(int index, int val) {
-        update(root, 0, N, index, index, val);
+    public void addRange(int left, int right) {
+        update(root, 1, N - 1, left, right - 1, 1);
     }
 
-    public int sumRange(int left, int right) {
-        return query(root, 1, N, left, right);
+    public boolean queryRange(int left, int right) {
+        return query(root, 1, N - 1, left, right - 1) == right - left;
+    }
+
+    public void removeRange(int left, int right) {
+        update(root, 1, N - 1, left, right - 1, -1);
     }
 
     static class Node {
