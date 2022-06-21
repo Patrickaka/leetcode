@@ -18,7 +18,7 @@ import java.util.Map;
  * }
  * }
  */
-class Solution {
+class Solution508 {
 
     Map<Integer, Integer> map = new HashMap<>();
     int max = 0;
