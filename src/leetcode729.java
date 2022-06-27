@@ -3,16 +3,6 @@ class MyCalendar {
     int N = (int) 1e9, M = 120010, cnt = 1;
     Node[] tr = new Node[M];
 
-    public static void main(String[] args) {
-        MyCalendar calendar = new MyCalendar();
-        boolean b1 = calendar.book(10, 20);
-        System.out.println(b1);
-        boolean b2 = calendar.book(15, 25);
-        System.out.println(b2);
-        boolean b3 = calendar.book(20, 30);
-        System.out.println(b3);
-    }
-
     void update(int u, int lc, int rc, int l, int r, int v) {
         if (l <= lc && rc <= r) {
             tr[u].val += (rc - lc + 1) * v;

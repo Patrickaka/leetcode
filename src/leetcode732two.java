@@ -45,9 +45,13 @@ class MyCalendarThreeTwo {
         pushUp(node);
     }
 
-    public int book(int start, int end) {
+    public boolean book(int start, int end) {
         update(root, 0, N, start, end - 1, 1);
-        return root.val;
+        if (root.val > 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     private static class Node {
