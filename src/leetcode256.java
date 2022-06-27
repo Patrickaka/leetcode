@@ -1,4 +1,4 @@
-class Solution {
+class Solution256 {
     public int minCost(int[][] costs) {
         int n = costs.length;
         int a = 0, b = 0, c = 0;
