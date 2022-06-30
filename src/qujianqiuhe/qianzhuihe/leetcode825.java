@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 import java.util.Arrays;
 
 class Solution825 {

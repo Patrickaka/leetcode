@@ -1,3 +1,5 @@
+package qujianqiuhe.chafen;
+
 import java.util.Arrays;
 
 class Solution798 {

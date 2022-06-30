@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class Solution661 {
     public int[][] imageSmoother(int[][] img) {
         int n = img.length, m = n == 0 ? 0 : img[0].length;

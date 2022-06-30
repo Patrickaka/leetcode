@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class Solution1894 {
     public int chalkReplacer(int[] chalk, int k) {
         int n = chalk.length;

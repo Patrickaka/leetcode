@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class Solution528 {
 
     int N;

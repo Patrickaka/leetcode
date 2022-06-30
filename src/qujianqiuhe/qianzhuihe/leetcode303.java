@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class NumArray303 {
 
     int[] arr;

@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class Solution724 {
     public static int pivotIndex(int[] nums) {
         int n = nums.length;

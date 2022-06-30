@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class NumMatrix {
 
     int[][] sum;
@@ -20,9 +22,3 @@ class NumMatrix {
         return sum[row2][col2] - sum[row1 - 1][col2] - sum[row2][col1 - 1] + sum[row1 - 1][col1 - 1];
     }
 }
-
-/*
-  Your NumMatrix object will be instantiated and called as such:
-  NumMatrix obj = new NumMatrix(matrix);
-  int param_1 = obj.sumRegion(row1,col1,row2,col2);
- */

@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class Solution1588 {
     public static int sumOddLengthSubarrays(int[] arr) {
 //        int n = arr.length;

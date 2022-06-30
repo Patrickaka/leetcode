@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 import java.util.HashMap;
 import java.util.Map;
 

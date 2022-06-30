@@ -1,3 +1,5 @@
+package qujianqiuhe.chafen;
+
 class Solution1109 {
     public int[] corpFlightBookings(int[][] bookings, int n) {
         int[] c = new int[n + 1];
