@@ -1,17 +1,19 @@
-package review;
-
-class MyCalendarThree {
+class MyCalendarTwo {
 
     static int N = (int) 1e9;
     Node root = new Node();
 
-    public MyCalendarThree() {
+    public MyCalendarTwo() {
 
     }
 
-    public int book(int start, int end) {
+    public boolean book(int start, int end) {
+        int ans = query(root, 0, N - 1, start, end - 1);
+        if (ans >= 2) {
+            return false;
+        }
         update(root, 0, N - 1, start, end - 1, 1);
-        return root.val;
+        return true;
     }
 
     void pushUp(Node node) {
