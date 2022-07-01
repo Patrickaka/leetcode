@@ -1,35 +1,41 @@
+package tulun.leetcode1034.bfs;
+
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-class Solution1034 {
+class Solution {
     public int[][] colorBorder(int[][] grid, int row, int col, int color) {
-        int m = grid.length, n = grid[0].length;
-        int[][] ans = new int[m][n];
-        int[][] positions = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        int n = grid.length, m = grid[0].length;
         Deque<int[]> deque = new ArrayDeque<>();
+        int[][] ans = new int[n][m];
+        int[][] positions = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
         deque.addLast(new int[]{row, col});
         while (!deque.isEmpty()) {
             int[] temp = deque.pollFirst();
-            int x = temp[0], y = temp[1], count = 0;
+            int count = 0;
             for (int[] position : positions) {
-                int dx = x + position[0], dy = y + position[1];
-                if (dx < 0 || dx >= m || dy < 0 || dy >= n) {
+                int x = position[0], y = position[1];
+                int dx = temp[0] + x, dy = temp[1] + y;
+                if (dx < 0 || dy < 0 || dx >= n || dy >= m) {
                     continue;
                 }
-                if (grid[x][y] != grid[dx][dy]) {
+                if (grid[dx][dy] != grid[temp[0]][temp[1]]) {
                     continue;
-                } else {
-                    count++;
                 }
+                count++;
                 if (ans[dx][dy] != 0) {
                     continue;
                 }
                 deque.addLast(new int[]{dx, dy});
             }
-            ans[x][y] = count == 4 ? grid[x][y] : color;
+            if (count == 4) {
+                ans[temp[0]][temp[1]] = grid[temp[0]][temp[1]];
+            } else {
+                ans[temp[0]][temp[1]] = color;
+            }
         }
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 if (ans[i][j] == 0) {
                     ans[i][j] = grid[i][j];
                 }
