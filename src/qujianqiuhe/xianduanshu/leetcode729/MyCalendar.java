@@ -1,4 +1,5 @@
-package review;
+package qujianqiuhe.xianduanshu.leetcode729;
+
 
 class MyCalendar {
 
@@ -7,6 +8,15 @@ class MyCalendar {
 
     public MyCalendar() {
 
+    }
+
+    public boolean book(int start, int end) {
+        int ans = query(root, 0, N, start, end - 1);
+        if (ans > 0) {
+            return false;
+        }
+        update(root, 0, N, start, end - 1, 1);
+        return true;
     }
 
     void pushUp(Node node) {
@@ -24,8 +34,8 @@ class MyCalendar {
             return;
         }
         node.left.val += node.add;
-        node.right.val += node.add;
         node.left.add += node.add;
+        node.right.val += node.add;
         node.right.add += node.add;
         node.add = 0;
     }
@@ -38,7 +48,7 @@ class MyCalendar {
         }
         pushDown(node);
         int mid = start + end >> 1;
-        if (mid >= l) {
+        if (l <= mid) {
             update(node.left, start, mid, l, r, val);
         }
         if (mid < r) {
@@ -52,23 +62,14 @@ class MyCalendar {
             return node.val;
         }
         pushDown(node);
-        int mid = start + end >> 1;
-        int lans = 0, rans = 0;
-        if (mid >= l) {
-            lans = query(node.left, start, mid, l, r);
+        int mid = start + end >> 1, ans1 = 0, ans2 = 0;
+        if (l <= mid) {
+            ans1 = query(node.left, start, mid, l, r);
         }
         if (mid < r) {
-            rans = query(node.right, mid + 1, end, l, r);
+            ans2 = query(node.right, mid + 1, end, l, r);
         }
-        return Math.max(lans, rans);
-    }
-
-    public boolean book(int start, int end) {
-        if (query(root, 0, N - 1, start, end - 1) > 0) {
-            return false;
-        }
-        update(root, 0, N - 1, start, end - 1, 1);
-        return true;
+        return Math.max(ans1, ans2);
     }
 
     private static class Node {
