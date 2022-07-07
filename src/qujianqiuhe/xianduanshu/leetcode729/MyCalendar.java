@@ -1,17 +1,22 @@
-package review;
+package qujianqiuhe.xianduanshu.leetcode729;
 
-class MyCalendarThree {
+
+class MyCalendar {
 
     static int N = (int) 1e9;
     Node root = new Node();
 
-    public MyCalendarThree() {
+    public MyCalendar() {
 
     }
 
-    public int book(int start, int end) {
-        update(root, 0, N - 1, start, end - 1, 1);
-        return root.val;
+    public boolean book(int start, int end) {
+        int ans = query(root, 0, N, start, end - 1);
+        if (ans > 0) {
+            return false;
+        }
+        update(root, 0, N, start, end - 1, 1);
+        return true;
     }
 
     void pushUp(Node node) {
