@@ -1,3 +1,5 @@
+package qujianqiuhe.xianduanshu.leetcode731;
+
 class MyCalendarTwo {
 
     static int N = (int) 1e9;

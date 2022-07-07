@@ -1,4 +1,6 @@
-class Solution1893 {
+package qujianqiuhe.shuzhuangshuzu.leetcode1893;
+
+class Solution {
 
     int n = 55;
     int[] tr = new int[n];

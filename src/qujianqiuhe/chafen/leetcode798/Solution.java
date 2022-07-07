@@ -1,8 +1,8 @@
-package qujianqiuhe.chafen;
+package qujianqiuhe.chafen.leetcode798;
 
 import java.util.Arrays;
 
-class Solution798 {
+class Solution {
 
     static int N = 100010;
     static int[] c = new int[N];

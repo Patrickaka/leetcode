@@ -1,9 +1,11 @@
-class MyCalendarThreeTwo {
+package qujianqiuhe.xianduanshu.leetcode732;
+
+class MyCalendarThree {
 
     static int N = (int) 1e9;
     Node root = new Node();
 
-    public MyCalendarThreeTwo() {
+    public MyCalendarThree() {
 
     }
 

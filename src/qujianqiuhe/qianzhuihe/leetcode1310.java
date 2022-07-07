@@ -1,3 +1,5 @@
+package qujianqiuhe.qianzhuihe;
+
 class Solution1310 {
     public int[] xorQueries(int[] arr, int[][] queries) {
         int n = arr.length, m = queries.length;

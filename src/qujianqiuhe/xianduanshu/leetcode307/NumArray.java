@@ -1,3 +1,5 @@
+package qujianqiuhe.xianduanshu.leetcode307;
+
 class NumArray {
 
     private int N = (int) 1e9;

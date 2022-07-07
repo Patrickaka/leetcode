@@ -1,6 +1,8 @@
+package qujianqiuhe.shuzhuangshuzu.leetcode406;
+
 import java.util.Arrays;
 
-class Solution406 {
+class Solution {
     int n;
     int[] tr;
 

@@ -1,6 +1,6 @@
-package qujianqiuhe.chafen;
+package qujianqiuhe.chafen.leetcode1109;
 
-class Solution1109 {
+class Solution {
     public int[] corpFlightBookings(int[][] bookings, int n) {
         int[] c = new int[n + 1];
         for (int[] booking : bookings) {

@@ -1,4 +1,6 @@
-class Solution1395 {
+package qujianqiuhe.shuzhuangshuzu.leetcode1395;
+
+class Solution {
 
     static int N = (int) 1e5 + 10;
     static int[] tr = new int[N];
