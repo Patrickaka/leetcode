@@ -1,4 +1,4 @@
-package leetcode1200;
+package moni.leetcode1200;
 
 import java.util.ArrayList;
 import java.util.Arrays;
