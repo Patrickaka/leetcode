@@ -16,8 +16,8 @@ class Solution {
         System.out.println(solution.allPathsSourceTarget(graph));
     }
 
-    public List<List<Integer>> allPathsSourceTarget(int[][] _graph) {
-        graph = _graph;
+    public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
+        this.graph = graph;
         n = graph.length;
         cur.add(0);
         dfs(0);
