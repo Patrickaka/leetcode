@@ -1,4 +1,4 @@
-package review.meiri.leetcode735;
+package moni.leetcode735;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;
