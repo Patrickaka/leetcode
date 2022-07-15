@@ -17,10 +17,6 @@ class Solution {
         System.out.println(solution.pacificAtlantic(height));
     }
 
-    void union(int[] p, int a, int b) {
-        p[find(p, a)] = p[find(p, b)];
-    }
-
     boolean query(int[] p, int a, int b) {
         return find(p, a) == find(p, b);
     }
@@ -84,5 +80,9 @@ class Solution {
             }
             dfs(p, idx, nx, ny);
         }
+    }
+
+    void union(int[] p, int a, int b) {
+        p[find(p, b)] = find(p, a);
     }
 }
