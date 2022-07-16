@@ -48,12 +48,15 @@ class Solution {
             for (int num : nums) {
                 int a = poll + num, b = poll - num, c = poll ^ num;
                 if (add(a, step, d1, source, target)) {
+                    System.out.println(a);
                     return step + 1 + target.get(a);
                 }
                 if (add(b, step, d1, source, target)) {
+                    System.out.println(b);
                     return step + 1 + target.get(b);
                 }
                 if (add(c, step, d1, source, target)) {
+                    System.out.println(c);
                     return step + 1 + target.get(c);
                 }
             }
