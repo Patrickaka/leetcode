@@ -2,7 +2,7 @@ package tulun.leetcode863;
 
 import java.util.*;
 
-class Solution {
+public class Solution {
 
     int[] e = new int[M], ne = new int[M], he = new int[N];
     static int N = 510, M = N * 4;
@@ -54,7 +54,7 @@ class Solution {
         }
     }
 
-    public static class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
