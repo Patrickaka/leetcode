@@ -1,20 +1,18 @@
-package tulun.leetcode2049;
+package review.meiri.lc;
 
 import java.util.Arrays;
 
 class Solution {
 
-    int idx;
-    static int N = 100010, M = N * 2;
-
-    static int[] he = new int[N], e = new int[M], ne = new int[M];
-    static int[] f = new int[N];
+    int idx = 0;
 
     void add(int a, int b) {
         e[idx] = b;
         ne[idx] = he[a];
         he[a] = idx++;
     }
+
+    static int M = (int) 1e5 + 10, N = M * 2;
 
     public int countHighestScoreNodes(int[] parents) {
         Arrays.fill(he, -1);
@@ -43,6 +41,7 @@ class Solution {
         return ans;
     }
 
+    static int[] f = new int[M];
 
     int dfs(int x) {
         int ans = 1;
@@ -52,6 +51,8 @@ class Solution {
         f[x] = ans;
         return ans;
     }
+
+    static int[] he = new int[M], ne = new int[N], e = new int[N];
 
 
 }
