@@ -1,54 +1,67 @@
 package tulun.leetcode778;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 class Solution {
 
-    static int n = 50;
-    static int[][] positions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-    int cnt = 0, target = 0;
-    boolean[] vis = new boolean[n * n];
+    int n;
+    int[] p;
 
-    int getPosition(int x, int y) {
+    void union(int a, int b) {
+        p[find(a)] = p[find(b)];
+    }
+
+    boolean query(int a, int b) {
+        return find(a) == find(b);
+    }
+
+    int find(int x) {
+        if (p[x] != x) {
+            p[x] = find(p[x]);
+        }
+        return p[x];
+    }
+
+    int getIdx(int x, int y) {
         return x * n + y;
     }
 
     public int swimInWater(int[][] grid) {
-        int len = grid.length;
-        target = getPosition(len - 1, len - 1);
-        Deque<Integer> deque = new ArrayDeque<>();
-        Map<Integer, Integer> map = new HashMap<>();
-        deque.add(0);
-        map.put(0, 0);
-        vis[0] = true;
-        while (!deque.isEmpty()) {
-            int size = deque.size();
-            while (size-- > 0) {
-                int poll = deque.poll();
-                if (poll == target) {
-                    return map.get(poll);
+        n = grid.length;
+        p = new int[n * n];
+        for (int i = 0; i < n; i++) {
+            p[i] = i;
+        }
+        List<int[]> edges = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                int idx = getIdx(i, j);
+                p[idx] = idx;
+                if (i + 1 < n) {
+                    int b = getIdx(i + 1, j);
+                    int w = Math.max(grid[i][j], grid[i + 1][j]);
+                    edges.add(new int[]{idx, b, w});
                 }
-                int x = poll / n, y = poll % n;
-                for (int[] pos : positions) {
-                    int nx = x + pos[0], ny = y + pos[1];
-                    int np = getPosition(nx, ny);
-                    int step = map.get(poll);
-                    if (nx < 0 || ny < 0 || nx >= len || ny >= len) {
-                        continue;
-                    }
-                    if (!vis[np] && grid[nx][ny] <= cnt) {
-                        deque.add(np);
-                        map.put(np, step + 1)
-                    }
-                    if (!vis[np] && grid[nx][ny] > cnt) {
-                        deque.add(poll);
-                    }
+                if (j + 1 < n) {
+                    int b = getIdx(i, j + 1);
+                    int w = Math.max(grid[i][j], grid[i][j + 1]);
+                    edges.add(new int[]{idx, b, w});
                 }
             }
-
         }
+
+        edges.sort(Comparator.comparingInt(a -> a[2]));
+
+        int start = getIdx(0, 0), end = getIdx(n - 1, n - 1);
+        for (int[] edge : edges) {
+            int a = edge[0], b = edge[1], w = edge[2];
+            union(a, b);
+            if (query(start, end)) {
+                return w;
+            }
+        }
+        return 0;
     }
 }

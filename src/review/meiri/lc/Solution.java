@@ -1,58 +1,48 @@
 package review.meiri.lc;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 
 class Solution {
 
+    static int M = 510;
     int idx = 0;
+    int[] he = new int[M], ne = new int[M], e = new int[M], degree = new int[M];
 
     void add(int a, int b) {
         e[idx] = b;
         ne[idx] = he[a];
         he[a] = idx++;
+        degree[b]++;
     }
 
-    static int M = (int) 1e5 + 10, N = M * 2;
-
-    public int countHighestScoreNodes(int[] parents) {
+    public int[] loudAndRich(int[][] richer, int[] quiet) {
         Arrays.fill(he, -1);
-        int n = parents.length;
-        for (int i = 1; i < n; i++) {
-            add(parents[i], i);
+        int n = quiet.length, max = 10000;
+        int[] ans = new int[n];
+        for (int[] arr : richer) {
+            add(arr[0], arr[1]);
         }
-        dfs(0);
-        long max = 0;
-        int ans = 0;
-        for (int x = 0; x < n; x++) {
-            long cur = 1;
-            for (int i = he[x]; i != -1; i = ne[i]) {
-                cur *= f[e[i]];
+
+        Deque<Integer> deque = new ArrayDeque<>();
+        for (int i = 0; i < n; i++) {
+            ans[i] = i;
+            if (degree[i] == 0) {
+                deque.addLast(i);
             }
-            if (x != 0) {
-                cur *= n - f[x];
-            }
-            if (cur > max) {
-                max = cur;
-                ans = 1;
-            } else if (cur == max) {
-                ans++;
+        }
+        while (!deque.isEmpty()) {
+            int poll = deque.pollFirst();
+            for (int i = he[poll]; i != -1; i = ne[i]) {
+                if (quiet[ans[poll]] < quiet[ans[e[i]]]) {
+                    ans[e[i]] = ans[poll];
+                }
+                if (--degree[e[i]] == 0) {
+                    deque.addLast(e[i]);
+                }
             }
         }
         return ans;
     }
-
-    static int[] f = new int[M];
-
-    int dfs(int x) {
-        int ans = 1;
-        for (int i = he[x]; i != -1; i = ne[i]) {
-            ans += dfs(e[i]);
-        }
-        f[x] = ans;
-        return ans;
-    }
-
-    static int[] he = new int[M], ne = new int[N], e = new int[N];
-
-
 }
