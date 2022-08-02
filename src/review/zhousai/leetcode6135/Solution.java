@@ -1,9 +1,6 @@
 package review.zhousai.leetcode6135;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 class Solution {
@@ -25,7 +22,6 @@ class Solution {
         int n = edges.length;
         p = new int[n];
         int[] degree = new int[n];
-        int cnt = 0;
         for (int i = 0; i < n; i++) {
             p[i] = i;
         }
@@ -43,23 +39,23 @@ class Solution {
         }
         while (!deque.isEmpty()) {
             int poll = deque.pollFirst();
-            cnt++;
+            p[poll] = -1;
             if (edges[poll] != -1) {
                 if (--degree[edges[poll]] == 0) {
                     deque.addLast(edges[poll]);
                 }
             }
         }
-        if (cnt == 0) {
-            Map<Integer, Integer> map = new HashMap<>();
-            for (int i = 0; i < n; i++) {
-                int e = find(i);
-                int time = map.getOrDefault(e, 0);
-                map.put(e, time + 1);
-
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            if (p[i] == -1) {
+                continue;
             }
-            return map.values().stream().sorted((a, b) -> (b - a)).collect(Collectors.toList()).get(0);
+            int e = find(i);
+            int time = map.getOrDefault(e, 0);
+            map.put(e, time + 1);
         }
-        return cnt == n ? -1 : n - cnt;
+        List<Integer> res = map.values().stream().sorted((a, b) -> (b - a)).collect(Collectors.toList());
+        return res.size() == 0 ? -1 : res.get(0);
     }
 }
