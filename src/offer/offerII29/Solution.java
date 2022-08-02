@@ -4,24 +4,22 @@ class Solution {
 
     public Node insert(Node head, int insertVal) {
         if (head == null) {
-            Node ans = new Node(Integer.MAX_VALUE);
+            Node ans = new Node(Integer.MIN_VALUE);
             ans.next = ans;
             return ans;
         }
         Node ans = head;
-        Node min = head;
+        Node max = head;
         while (true) {
-            if (head.next.val < min.val) {
-
-                min = head;
-                System.out.println(min.val);
+            if (head.next.val >= max.val) {
+                max = head;
             }
             if (head.val <= insertVal && head.next.val >= insertVal) {
                 head.next = new Node(insertVal, head.next);
                 return ans;
             }
             if (head.next.equals(ans)) {
-                min.next = new Node(insertVal, min);
+                max.next = new Node(insertVal, max.next);
                 return ans;
             }
             head = head.next;
