@@ -32,20 +32,22 @@ class Solution {
         m1.put(node1, 0);
         d2.add(node2);
         m2.put(node2, 0);
-        while (!d1.isEmpty()) {
-            int poll = d1.poll();
-            int step = m1.get(poll);
-            if (edges[poll] != -1 && !m1.containsKey(edges[poll])) {
-                d1.addLast(edges[poll]);
-                m1.put(edges[poll], step + 1);
+        while (!d1.isEmpty() || !d2.isEmpty()) {
+            if (!d1.isEmpty()) {
+                int poll1 = d1.poll();
+                int step1 = m1.get(poll1);
+                if (edges[poll1] != -1 && !m1.containsKey(edges[poll1])) {
+                    d1.addLast(edges[poll1]);
+                    m1.put(edges[poll1], step1 + 1);
+                }
             }
-        }
-        while (!d2.isEmpty()) {
-            int poll = d2.poll();
-            int step = m2.get(poll);
-            if (edges[poll] != -1 && !m2.containsKey(edges[poll])) {
-                d2.addLast(edges[poll]);
-                m2.put(edges[poll], step + 1);
+            if (!d2.isEmpty()) {
+                int poll = d2.poll();
+                int step = m2.get(poll);
+                if (edges[poll] != -1 && !m2.containsKey(edges[poll])) {
+                    d2.addLast(edges[poll]);
+                    m2.put(edges[poll], step + 1);
+                }
             }
         }
         for (int key : m1.keySet()) {
@@ -53,6 +55,9 @@ class Solution {
                 int temp = Math.max(m1.get(key), m2.get(key));
                 if (temp < minStep) {
                     minStep = temp;
+                    ans = key;
+                }
+                if (temp == minStep && ans > key) {
                     ans = key;
                 }
             }

@@ -1,4 +1,4 @@
-package offerII.offerII22;
+package offer.offer22;
 
 
 class Solution {
