@@ -1,4 +1,4 @@
-package offerII.offerII06;
+package offer.offer06;
 
 import java.util.Arrays;
 
