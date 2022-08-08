@@ -9,6 +9,7 @@ class Solution {
     static int INF = 0x3f3f3f3f;
 
     public int shortestPathLength(int[][] graph) {
+        //状态压缩
         int n = graph.length;
         int mask = 1 << n;
 
