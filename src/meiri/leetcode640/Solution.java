@@ -4,7 +4,7 @@ class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        System.out.println(solution.solveEquation("-x=-1"));
+        System.out.println(solution.solveEquation("-x=1"));
     }
 
     public String solveEquation(String equation) {
@@ -13,10 +13,11 @@ class Solution {
         for (int k = 0; k < split.length; k++) {
             String str = split[k];
             int previdx = 0;
-            char prevOp = equation.charAt(0) == '-' ? '-' : '+';
+            char prevOp = str.charAt(0) == '-' ? '-' : '+';
             int xsum = 0, sums = 0;
             for (int i = 0; i < str.length(); ) {
                 if (str.charAt(i) == '-' && i == 0) {
+                    previdx++;
                     i++;
                 }
                 if (str.charAt(i) == '+' || str.charAt(i) == '-') {
