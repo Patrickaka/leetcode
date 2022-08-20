@@ -1,36 +1,40 @@
 package qujianqiuhe.chafen.leetcode798;
 
-import java.util.Arrays;
-
 class Solution {
-
-    static int N = 100010;
-    static int[] c = new int[N];
-
-    void add(int l, int r) {
-        c[l] += 1;
-        c[r + 1] -= 1;
-    }
-
+    /**
+     * 假设当前数字为第i个数字，轮调次数为k
+     * 则当前下标为i - k
+     * 由于0 <= i - k <= n - 1 => i - (n - 1) <= k <= i
+     * 并且若想得分 需要 i - k >= nums[i] => i - nums[i] >= k
+     * 所以 i - (n - 1) <= k <= i - nums[i]
+     *
+     * @param nums nums
+     * @return int
+     */
     public int bestRotation(int[] nums) {
-        Arrays.fill(c, 0);
-        int n = nums.length;
+        var n = nums.length;
+        var diff = new int[n + 1];
         for (int i = 0; i < n; i++) {
-            int a = (i - (n - 1) + n) % n, b = (i - nums[i] + n) % n;
-            if (a <= b) {
-                add(a, b);
+            var a = (i - (n - 1) + n) % n;
+            var b = (i - nums[i] + n) % n;
+            if (a < b) {
+                diff[a]++;
+                diff[b]--;
             } else {
-                add(a, n - 1);
-                add(0, b);
+                diff[a]++;
+                diff[n]--;
+                diff[0]++;
+                diff[b + 1]--;
             }
         }
-        for (int i = 1; i <= n; i++) {
-            c[i] += c[i - 1];
-        }
-        int ans = 0;
-        for (int i = 1; i <= n; i++) {
-            if (c[i] > c[ans]) {
+        var max = 0;
+        var sum = 0;
+        var ans = 0;
+        for (var i = 0; i < diff.length; i++) {
+            sum += diff[i];
+            if (sum > max) {
                 ans = i;
+                max = sum;
             }
         }
         return ans;
