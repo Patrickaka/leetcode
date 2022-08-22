@@ -1,4 +1,4 @@
-package meiri.leetcode121;
+package dp.leetcode121;
 
 class Solution {
 

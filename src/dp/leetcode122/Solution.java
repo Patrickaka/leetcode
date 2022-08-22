@@ -1,4 +1,4 @@
-package meiri.leetcode122;
+package dp.leetcode122;
 
 class Solution {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ class Solution {
 
     public int maxProfit(int[] prices) {
         int n = prices.length;
-        int ans = 0, min = prices[0], max = 0;
+        int ans = 0, min = prices[0];
         for (int i = 1; i < n; i++) {
             if (prices[i] >= prices[i - 1]) {
                 min = Math.min(prices[i - 1], min);
