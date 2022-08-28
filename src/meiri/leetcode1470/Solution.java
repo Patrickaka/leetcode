@@ -1,4 +1,4 @@
-package meiri.leetcode1470;
+ package meiri.leetcode1470;
 
 class Solution {
     public int[] shuffle(int[] nums, int n) {
