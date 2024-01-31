@@ -58,7 +58,7 @@ public class FindTheMaximumNumberOfElementsInSubset {
             int res = 0;
             Set<Integer> twoSet = new HashSet<>();
             int sum = 1;
-            for (int i = 0; i < nums.length / 2; i++) {
+            for (int i = 0; i < nums.length; i++) {
                 twoSet.add(sum);
                 sum *= 2;
             }
@@ -69,19 +69,24 @@ public class FindTheMaximumNumberOfElementsInSubset {
             for (int start : map.keySet()) {
                 int cur = start;
                 int cnt = 0;
+                int k = 1;
                 while (map.containsKey(cur)) {
                     if (cur == 1) {
-                        cnt = 1;
+                        if (map.get(1) % 2 == 0) {
+                            cnt = map.get(1) / 2;
+                        } else {
+                            cnt = (map.get(1) + 1)/ 2;
+                        }
                         break;
                     }
                     cnt++;
                     if (map.get(cur) < 2) {
                         break;
                     }
-                    cur *= start;
+                    cur *= cur;
+                    k *= 2;
                 }
-                System.out.println("cnt:" + cnt + " " + "start:" + start);
-                if (twoSet.contains(cnt)) {
+                if (twoSet.contains(k)) {
                     res = Math.max(res, cnt * 2 - 1);
                 }
             }
