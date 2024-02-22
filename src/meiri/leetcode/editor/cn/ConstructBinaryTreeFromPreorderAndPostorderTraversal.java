@@ -39,7 +39,8 @@
 
 package meiri.leetcode.editor.cn;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ConstructBinaryTreeFromPreorderAndPostorderTraversal {
     public static void main(String[] args) {
@@ -63,26 +64,39 @@ public class ConstructBinaryTreeFromPreorderAndPostorderTraversal {
      * }
      */
     class Solution {
+
+        Map<Integer, Integer> map = new HashMap<>();
+        int[] preorder, postorder;
+
+        public TreeNode constructFromPrePost(int[] _preorder, int[] _postorder) {
+            preorder = _preorder;
+            postorder = _postorder;
+            int n = preorder.length;
+            for (int i = 0; i < postorder.length; i++) {
+                map.put(postorder[i], i);
+            }
+            return dfs(0, n - 1, 0, n - 1);
+        }
+
+
         //根-左-右
         //左-右-根
-        public TreeNode constructFromPrePost(int[] preorder, int[] postorder) {
+        TreeNode dfs(int preStart, int preLast, int postStart, int postLast) {
             TreeNode treeNode = new TreeNode();
-            int n = preorder.length;
-            treeNode.val = preorder[0];
+            treeNode.val = preorder[preStart];
             int index = -1;
-            if (n != 1) {
-                for (int i = 0; i < n; i++) {
-                    if (postorder[i] == preorder[1]) {
-                        index = i;
-                        break;
-                    }
-                }
+            if (preLast - preStart != 0) {
+                index = map.get(preorder[preStart + 1]);
             }
             if (index != -1) {
-                treeNode.left = constructFromPrePost(Arrays.copyOfRange(preorder, 1, index + 2), Arrays.copyOfRange(postorder, 0, index + 1));
+                treeNode.left = dfs(
+                        preStart + 1, preStart + 1 + index - postStart,
+                        postStart, index);
             }
-            if (index + 1 != n - 1) {
-                treeNode.right = constructFromPrePost(Arrays.copyOfRange(preorder, index + 2, n), Arrays.copyOfRange(postorder, index + 1, n - 1));
+            if (index != -1 && index + 1 != postLast) {
+                treeNode.right = dfs(
+                        preStart + 2 + index - postStart, preLast,
+                        index + 1, postLast - 1);
             }
             return treeNode;
         }
